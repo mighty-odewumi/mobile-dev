@@ -1,0 +1,103 @@
+import React from "react";
+import { View, ScrollView, Text, StyleSheet, FlatList, } from "react-native";
+
+const menuItems = [
+  { name: "Lucid Dreams", id: 1, },
+  { name: "Rental", id: 2, },
+  { name: "Rider", id: 3, },
+  { name: "Cake", id: 4, },
+  { name: "Doom", id: 5, },
+  { name: "Who Shot Cupid", id: 6, },
+  { name: "Let Go", id: 7, },
+  { name: "All Girls Are The Same", id: 8, },
+  { name: "Fine China", id: 9 },
+  { name: "Blood on my Jeans", id: 10, }, 
+  { name: "Hate Her Friends", id: 11, },
+  { name: "Burn", id: 12, },
+  { name: "Tell Me You Love Me", id: 13, },
+  { name: "Cowboy", id: 14, },
+  { name: "Reminds Me of You", id: 15, },
+  { name: "K Like A Russian", id: 16, },
+  { name: "Stargazing", id: 17, },
+  { name: "Hollywood Dreams", id: 18, },
+  { name: "Hurt Me", id: 19, },
+  { name: "Naruto", id: 20, },
+  { name: "Naruto", id: 21, },
+  { name: "Naruto", id: 22, },
+  { name: "Naruto", id: 23, },
+  { name: "Naruto", id: 24, },
+  { name: "Naruto", id: 25, },
+  { name: "Naruto", id: 26, },
+  { name: "Naruto", id: 27, },
+  { name: "Naruto", id: 28, },
+  { name: "Naruto", id: 29, },
+  { name: "Naruto", id: 30, },
+  { name: "Naruto", id: 31, },
+
+];
+
+const Item = ({item}) => {
+  return (
+    <View >
+      <Text style={scrollMenuStyles.items}>{item.name}</Text>
+      <Separator />
+    </View>
+  )
+};
+
+const Separator = () => {
+  return (
+    <View style={scrollMenuStyles.separator}>
+    </View>
+  )
+}
+
+const Header = () => {
+  return (
+    <View>
+      <Text style={scrollMenuStyles.title}>My Songs</Text>
+    </View>
+  )
+}
+
+export default function ScrollMenu() {
+
+  const renderItem = (({item}) => {
+    return <Item item={item} />
+  });
+
+  return (
+    <View style={scrollMenuStyles.container}> 
+      <FlatList 
+        data={menuItems}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        ListHeaderComponent={Header}
+      />
+    </View>
+  )
+}
+
+const scrollMenuStyles = StyleSheet.create({
+  container: {
+    flex: .70,
+  },
+  title: { 
+    color: "black", 
+    fontWeight: "bold",
+    fontSize: 30,
+    paddingLeft: 40,
+    paddingTop: 20,
+  },
+  items: { 
+    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 40,
+  },
+  separator: {
+    backgroundColor: "black",
+    width: "100%",
+    height: 2,
+  }
+});

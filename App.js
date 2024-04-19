@@ -3,18 +3,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import LittleLemonHeader from './components/LittleLemonHeader';
 import Footer from './components/Footer';
 import WelcomeScreen from './components/WelcomeScreen';
+import ScrollMenu from './components/ScrollMenu';
 
 export default function App() {
   return (
-    <View style={{
-      flex: 1,
-      justifyContent: "space-between",
-    }}>
+    <View style={styles.container}>
       {/* <Text style={{ fontSize: 20, }}>I'm so excited right now :), innit?😎</Text> */}
       <LittleLemonHeader />
       <StatusBar style="auto" />
-      <WelcomeScreen />
-      <Footer />
+      {/* <WelcomeScreen /> */}
+
+      <ScrollMenu />
+      {/* <Footer /> */}
     </View>
   );
 }
@@ -22,8 +22,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
