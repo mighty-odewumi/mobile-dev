@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, Text, StyleSheet, FlatList, } from "react-native";
+import { View, Text, StyleSheet, FlatList, SectionList, } from "react-native";
 
 const menuItems = [
   { name: "Lucid Dreams", id: 1, },
@@ -36,11 +36,56 @@ const menuItems = [
 
 ];
 
+const menuItemsToDisplay = [
+  {
+    title: "Appetizers",
+    data: [
+      { name: "Hummus", price: 14.22}, 
+      { name: "Moutabal", price: 12.22}, 
+      { name: "Falafel", price: 16.41}, 
+      { name: "Marinated Olives", price: 40.02}, 
+      { name: "Kofta", price: 46.12}, 
+      { name: "Eggplant Salad", price: 83.84}, 
+    ],
+  },
+  {
+    title: "Main Dishes",
+    data: [
+      { name: "Rice Pilaf", price: 1.45}, 
+      { name: "Greek Salad", price: 5.99}, 
+      { name: "Lentil Soup", price: 8.66}, 
+    ],
+  },
+  {
+    title: "Desserts",
+    data: [
+      { name: "Smoked Salmon", price: 111.45}, 
+      { name: "Tiramisu", price: 220.99}, 
+      { name: "Tartufo", price: 241.66}, 
+      { name: "Lenti Burger", price: 145.45}, 
+      { name: "Kofta", price: 129.09}, 
+      { name: "Eggplant", price: 159.99}, 
+    ],
+  },
+  {
+    title: "Supper",
+    data: [
+      { name: "Fries", price: 44.38}, 
+      { name: "Buttered Rice", price: 44.38}, 
+      { name: "Bread Sticks", price: 44.38}, 
+      { name: "Pita Pocket", price: 44.38}, 
+      { name: "Kofta", price: 44.38}, 
+      { name: "Salad", price: 44.38}, 
+    ],
+  },
+];
+
 const Item = ({item}) => {
   return (
-    <View >
+    <View style={scrollMenuStyles.itemsContainer}>
       <Text style={scrollMenuStyles.items}>{item.name}</Text>
-      <Separator />
+      <Text style={scrollMenuStyles.items}>${item.price}</Text>
+      {/* <Separator /> */}
     </View>
   )
 };
@@ -50,15 +95,15 @@ const Separator = () => {
     <View style={scrollMenuStyles.separator}>
     </View>
   )
-}
+};
 
-const Header = () => {
+const Header = ({title}) => {
   return (
     <View>
-      <Text style={scrollMenuStyles.title}>My Songs</Text>
+      <Text style={scrollMenuStyles.title}>{title}</Text>
     </View>
   )
-}
+}; 
 
 export default function ScrollMenu() {
 
@@ -66,13 +111,24 @@ export default function ScrollMenu() {
     return <Item item={item} />
   });
 
+  const renderSectionHeader = ({section: {title}}) => {
+    return <Header title={title}/>
+  };
+
   return (
     <View style={scrollMenuStyles.container}> 
-      <FlatList 
+      {/* <FlatList 
         data={menuItems}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={Header}
+      /> */}
+
+      <SectionList 
+        sections={menuItemsToDisplay}
+        renderItem={renderItem}
+        renderSectionHeader={renderSectionHeader}
+        ItemSeparatorComponent={Separator}
       />
     </View>
   )
@@ -89,11 +145,17 @@ const scrollMenuStyles = StyleSheet.create({
     paddingLeft: 40,
     paddingTop: 20,
   },
+  itemsContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: 40,
+    paddingRight: 40,
+  },
   items: { 
     fontSize: 20,
     paddingTop: 10,
     paddingBottom: 10,
-    paddingLeft: 40,
   },
   separator: {
     backgroundColor: "black",
