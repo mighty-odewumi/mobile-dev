@@ -8,7 +8,7 @@ export default function LittleLemonHeader() {
         style={headerStyles.mainText}
         numberOfLines={1}
       >
-        Welcome to <Text style={headerStyles.subText}>Little Lemon :)</Text>
+        <Text style={headerStyles.subText}>Little Lemon :)</Text>
       </Text>
     </View>
   )
