@@ -1,22 +1,50 @@
 import React, { useState } from "react";
-import { ScrollView, View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Alert, } from "react-native";
+import { ScrollView, View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Alert, Image, ImageBackground, } from "react-native";
 
 export default function WelcomeScreen() {
   const [name, setName] = useState();
-  const [lastName, setLastName] = useState();
-  const [message, setMessage] = useState();
+  const [lastName, setLastName] = useState("");
+  const [message, setMessage] = useState("");
 
   return (
-    <KeyboardAvoidingView 
-      style={styles.container} 
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <ScrollView keyboardDismissMode="on-drag">
-        <Text style={styles.text}>
-          Little Lemon is a charming neighbourhood bistro that serves simple food and classic cocktails in a lively but casual environment. We would love to hear more about your experience with us!
-        </Text>
+    // <KeyboardAvoidingView 
+    //   style={styles.container} 
+    //   behavior={Platform.OS === "ios" ? "padding" : "height"}
+    // >
+      <View keyboardDismissMode="on-drag" style={styles.container} >
 
-        <TextInput 
+        <ImageBackground 
+          source={require("../assets/favicon.png")}
+          style={styles.image}
+          resizeMode="contain"
+        >
+          <Text style={styles.text}>
+            Little Lemon, your local Mediterranean Bistro
+          </Text>
+        </ImageBackground>
+
+        {/* <Image 
+          source={require("../assets/favicon.png")}
+          style={styles.image}
+          resizeMode="contain"
+          accessible={true}
+          accessibilityLabel="Image"
+        /> */}
+
+        
+        {/* <Image 
+          source={require("../assets/splash.png")}
+          style={styles.image}
+          resizeMode="contain"
+        />
+
+        <Image 
+          source={require("../assets/icon.png")}
+          style={styles.image}
+          resizeMode="contain"
+        /> */}
+
+        {/* <TextInput 
           value={name} 
           onChangeText={setName} 
           placeholder="Enter your name"
@@ -44,9 +72,9 @@ export default function WelcomeScreen() {
           keyboardType="default" // numeric, twitter, url, email-address, phone-pad
           multiline={true}
           maxLength={120}
-        />
-      </ScrollView>
-    </KeyboardAvoidingView>
+        /> */}
+      </View>
+    // </KeyboardAvoidingView>
   )
 }
 
@@ -58,6 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 20, 
     textAlign: "center",
+    color: "blue",
   },
   input: {
     backgroundColor: "#e5e5e5",
@@ -67,5 +96,11 @@ const styles = StyleSheet.create({
   },
   message: {
     paddingBottom: 140,
-  }
+  },
+  image: {
+    // height: 100,
+    // width: 300,
+    flex: 1,
+    justifyContent: "center",
+  },
 });
