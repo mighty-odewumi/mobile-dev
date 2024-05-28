@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, SectionList, } from "react-native";
+import { View, Text, StyleSheet, FlatList, SectionList, Pressable, } from "react-native";
 
 const menuItems = [
   { name: "Lucid Dreams", id: 1, },
@@ -105,7 +105,7 @@ const Header = ({title}) => {
   )
 }; 
 
-export default function ScrollMenu() {
+export default function ScrollMenu({navigation}) {
 
   const renderItem = (({item}) => {
     return <Item item={item} />
@@ -117,6 +117,7 @@ export default function ScrollMenu() {
 
   return (
     <View style={scrollMenuStyles.container}> 
+      
       {/* <FlatList 
         data={menuItems}
         renderItem={renderItem}
@@ -130,13 +131,17 @@ export default function ScrollMenu() {
         renderSectionHeader={renderSectionHeader}
         ItemSeparatorComponent={Separator}
       />
+
+      <Pressable onPress={() => navigation.goBack()}>
+        <Text>Go back to Home</Text>
+      </Pressable>
     </View>
   )
 }
 
 const scrollMenuStyles = StyleSheet.create({
   container: {
-    flex: .70,
+    flex: .95,
   },
   title: { 
     color: "black", 

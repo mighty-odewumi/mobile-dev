@@ -1,16 +1,37 @@
 import React, { useState } from "react";
-import { ScrollView, View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Alert, Image, ImageBackground, } from "react-native";
+import { ScrollView, View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Alert, Image, ImageBackground, useColorScheme, useWindowDimensions, Pressable, } from "react-native";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({navigation}) {
   const [name, setName] = useState();
   const [lastName, setLastName] = useState("");
   const [message, setMessage] = useState("");
+  const colorScheme = useColorScheme();
+  const window = useWindowDimensions();
+
+ 
 
   return (
-    // <KeyboardAvoidingView 
-    //   style={styles.container} 
-    //   behavior={Platform.OS === "ios" ? "padding" : "height"}
-    // >
+    <View 
+      // style={[styles.container, colorScheme === "dark" ? { backgroundColor: "black"} : {backgroundColor: "white"}] }
+    >
+      {/* <Text style={[styles.text, colorScheme === "dark" ? { color: "white"} : { color: "black"}]}>
+        Color Scheme: {colorScheme}
+      </Text> */}
+      <Text style={{fontWeight: "bold", fontSize: 30, marginLeft: 20,}}>Hi, there!</Text>
+      <Pressable onPress={() => {navigation.navigate("Menu")}}>
+        <Text>View Menu</Text>
+      </Pressable>
+      {/* <Text>Window Dimensions</Text>
+      <Text>Window Height: {window.height}</Text>
+      <Text>Window Width: {window.width}</Text>
+      <Text>Font Scale: {window.fontScale}</Text> */}
+    </View>
+
+  )
+    {/* <KeyboardAvoidingView 
+      style={styles.container} 
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
       <View keyboardDismissMode="on-drag" style={styles.container} >
 
         <ImageBackground 
@@ -23,16 +44,16 @@ export default function WelcomeScreen() {
           </Text>
         </ImageBackground>
 
-        {/* <Image 
+        <Image 
           source={require("../assets/favicon.png")}
           style={styles.image}
           resizeMode="contain"
           accessible={true}
           accessibilityLabel="Image"
-        /> */}
+        /> 
 
         
-        {/* <Image 
+        <Image 
           source={require("../assets/splash.png")}
           style={styles.image}
           resizeMode="contain"
@@ -42,9 +63,9 @@ export default function WelcomeScreen() {
           source={require("../assets/icon.png")}
           style={styles.image}
           resizeMode="contain"
-        /> */}
+        />
 
-        {/* <TextInput 
+        <TextInput 
           value={name} 
           onChangeText={setName} 
           placeholder="Enter your name"
@@ -72,10 +93,9 @@ export default function WelcomeScreen() {
           keyboardType="default" // numeric, twitter, url, email-address, phone-pad
           multiline={true}
           maxLength={120}
-        /> */}
+        />
       </View>
-    // </KeyboardAvoidingView>
-  )
+    </KeyboardAvoidingView> */}
 }
 
 const styles = StyleSheet.create({
