@@ -25,6 +25,7 @@ const SubscribeScreen = () => {
         value={email}
         placeholder='Enter your email address'
         style={styles.input}
+        keyboardType='email-address'
       />
 
       <Pressable 
@@ -71,5 +72,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     borderRadius: 10,
     margin: 20,
+    letterSpacing: 5,
   },
 });

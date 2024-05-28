@@ -49,5 +49,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 20,
     fontWeight: "600",
+    letterSpacing: 5,
   }
 });
