@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ScrollView, View, Text, StyleSheet, TextInput, } from "react-native";
+import { ScrollView, View, Text, StyleSheet, TextInput, Pressable, } from "react-native";
 
-export default function LoginScreen() {
-  const [password, setPassword] = useState();
-  const [email, setEmail] = useState();
+export default function LoginScreen({setLoggedIn, }) {
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
     <ScrollView style={styles.container}>
@@ -24,6 +24,13 @@ export default function LoginScreen() {
         keyboardType="default"
         secureTextEntry={true}
       />
+
+      <Pressable 
+        onPress={() => setLoggedIn(true)}
+        style={styles.pressable}
+      >
+        <Text style={styles.buttonText}>Sign in</Text>
+      </Pressable>
     </ScrollView>
   )
 }
@@ -47,5 +54,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#e5e5e5",
     padding: 10,
     margin: 10,
-  }
+  },
+  pressable: {
+    backgroundColor: "blue",
+    margin: 10,
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+    padding: 10,
+    fontWeight: "bold",
+  },
 });
