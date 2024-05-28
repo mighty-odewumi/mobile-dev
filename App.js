@@ -9,8 +9,9 @@ import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
-
+import RootNavigator from './navigators/RootNavigator';
 
 export default function App() {
 
@@ -37,17 +38,19 @@ export default function App() {
     )
   }
 
-  const Stack = createNativeStackNavigator();
+  // const Stack = createNativeStackNavigator();
 
-  const Tab = createBottomTabNavigator();
+  // const Tab = createBottomTabNavigator();
+
+  // const Drawer = createDrawerNavigator();
   
   return (
     <NavigationContainer>
-      <View style={styles.container}>
+      <RootNavigator />
+       {/* <View style={styles.container}> */}
         {/* <LittleLemonHeader /> */}
         <StatusBar style="auto" />
-        {/* {loggedIn ? (<LoginScreen setLoggedIn={setLoggedIn} />) : loggedInText }  */}
-        <Tab.Navigator 
+        {/* <Tab.Navigator 
           screenOptions={({route}) => ({
             tabBarIcon: ({ focused, color, size, }) => {
               let iconName;
@@ -58,6 +61,8 @@ export default function App() {
                   : "home-outline"
               } else if (route.name === "Menu") {
                   iconName = "list";
+              } else if (route.name === "Settings") {
+                iconName = "cog";
               }
 
               return <Ionicons name={iconName} color={color} size={size} />
@@ -68,9 +73,11 @@ export default function App() {
         >
           <Tab.Screen name="Welcome" component={WelcomeScreen} />
           <Tab.Screen name="Menu" component={ScrollMenu}/>
-        </Tab.Navigator>
+          <Tab.Screen name="Settings" component={ScrollMenu}/>
+        </Tab.Navigator> */}
+
         {/* <Footer />  */}
-      </View>
+      {/* </View> */}
       
     </NavigationContainer>
   );
