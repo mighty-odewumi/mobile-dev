@@ -8,8 +8,6 @@ export default function WelcomeScreen({navigation}) {
   const colorScheme = useColorScheme();
   const window = useWindowDimensions();
 
- 
-
   return (
     <View 
       // style={[styles.container, colorScheme === "dark" ? { backgroundColor: "black"} : {backgroundColor: "white"}] }
